@@ -55,6 +55,14 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    public List<Ad> adsById(Long id) throws SQLException {
+        String query = "SELECT * FROM ads WHERE user_id = ?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setLong(1, id);
+        ResultSet rs = statement.executeQuery();
+        return createAdsFromResults(rs);
+    }
+
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
             rs.getLong("id"),
@@ -71,4 +79,5 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+
 }
