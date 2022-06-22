@@ -55,6 +55,17 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    @Override
+    public List<Ad> searchAds(String search) throws SQLException {
+            String searchQuery = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ?";
+            String searchTerm = "%" + search + "%";
+            PreparedStatement statement = connection.prepareStatement(searchQuery, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, searchTerm);
+            statement.setString(2, searchTerm);
+            ResultSet rs = statement.executeQuery();
+            return createAdsFromResults(rs);
+    }
+
     public List<Ad> adsById(Long id) throws SQLException {
         String query = "SELECT * FROM ads WHERE user_id = ?";
         PreparedStatement statement = connection.prepareStatement(query);
