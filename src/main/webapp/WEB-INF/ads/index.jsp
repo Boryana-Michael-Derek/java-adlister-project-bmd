@@ -17,7 +17,11 @@
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
         </div>
+        <form action="/ads" method="post">
+            <button type="submit" name="showad" value="${ad.id}">View Ad</button>
+        </form>
     </c:forEach>
+
 </div>
 
 </body>

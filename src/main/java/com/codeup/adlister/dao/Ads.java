@@ -12,4 +12,8 @@ public interface Ads {
     Long insert(Ad ad);
 
     List<Ad> adsById(Long id) throws SQLException;
+
+//    Ad showOneAd(long id);
+
+    Ad findAdByAdId(long id);
 }
