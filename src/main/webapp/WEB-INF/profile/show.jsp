@@ -13,7 +13,7 @@
     <div class="container">
         <h1>Welcome, ${sessionScope.user.username}!</h1>
         <h3>${sessionScope.user.email}</h3>
-
+        <button onclick="window.location='/profile/edit'">Edit Profile</button>
     </div>
 
     <div class="container">
@@ -25,7 +25,6 @@
                 <p>${ad.description}</p>
             </div>
         </c:forEach>
-        <a href="/profile/edit">Edit</a>
     </div>
 
 </body>
