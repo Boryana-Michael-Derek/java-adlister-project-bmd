@@ -9,6 +9,11 @@
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
+<form action="/ads" method="POST" class="">
+    <input class="form-control" name="search" type="search" placeholder="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+
 <div class="container">
     <h1>Here Are all the ads!</h1>
 
