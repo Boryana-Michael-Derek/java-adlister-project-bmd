@@ -57,12 +57,7 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public List<Ad> searchAds(String search) throws SQLException {
-            String searchQuery = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ? " +
-                    "UNION SELECT * FROM ads AS a " +
-                    "INNER JOIN (SELECT ac.ads_id, GROUP_CONCAT(c.category SEPARATOR ', ')" +
-                    "FROM ads_categories AS ac INNER JOIN categories c ON c.id = ac.categories_id" +
-                    "GROUP BY ac.ads_id) AS A ON a.ads_id = A.ads_id" +
-                    "WHERE category Like ?";
+        String searchQuery = "SELECT * FROM ads AS a JOIN ads_categories AS ac ON a.id = ac.ads_id JOIN categories AS c ON ac.categories_id = c.id WHERE c.category LIKE ? OR a.title LIKE ? OR a.description LIKE ?";
 
             String searchTerm = "%" + search + "%";
             PreparedStatement statement = connection.prepareStatement(searchQuery, Statement.RETURN_GENERATED_KEYS);
