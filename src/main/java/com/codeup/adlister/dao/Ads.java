@@ -13,5 +13,10 @@ public interface Ads {
 
     List<Ad> adsById(Long id) throws SQLException;
 
+    //    Ad showOneAd(long id);
+
+    Ad findAdByAdId(long id);
+
     List<Ad> searchAds(String search) throws SQLException;
+
 }

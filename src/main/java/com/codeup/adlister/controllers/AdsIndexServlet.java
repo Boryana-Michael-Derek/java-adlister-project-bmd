@@ -21,7 +21,8 @@ public class AdsIndexServlet extends HttpServlet {
     }
 
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String search = request.getParameter("search");
         List<Ad> adList = null;
         try {
@@ -31,5 +32,10 @@ public class AdsIndexServlet extends HttpServlet {
         }
         request.getSession().setAttribute("search", adList);
         response.sendRedirect("ads/search");
+    
+  
+        long id = Long.parseLong(req.getParameter("showad"));
+        req.setAttribute("ad", DaoFactory.getAdsDao().findAdByAdId(id));
+        req.getRequestDispatcher("/WEB-INF/ads/show.jsp").forward(req, resp);
     }
 }
