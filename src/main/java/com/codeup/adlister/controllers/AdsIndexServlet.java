@@ -22,20 +22,22 @@ public class AdsIndexServlet extends HttpServlet {
 
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String search = request.getParameter("search");
+        long id = Long.parseLong(request.getParameter("showad"));
         List<Ad> adList = null;
+
         try {
             adList = DaoFactory.getAdsDao().searchAds(search);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         request.getSession().setAttribute("search", adList);
-        response.sendRedirect("ads/search");
-    
-  
-        long id = Long.parseLong(req.getParameter("showad"));
-        req.setAttribute("ad", DaoFactory.getAdsDao().findAdByAdId(id));
-        req.getRequestDispatcher("/WEB-INF/ads/show.jsp").forward(req, resp);
+        request.setAttribute("ad", DaoFactory.getAdsDao().findAdByAdId(id));
+
+
+        request.getRequestDispatcher("/WEB-INF/ads/show.jsp").forward(request, response);
+        response.sendRedirect("ads/search"); //this line must be below line above it or else 500 error!
     }
 }
