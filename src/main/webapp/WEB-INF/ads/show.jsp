@@ -20,8 +20,10 @@
     <div class="col-md-12">
         <h1><c:out value="${ad.title}" /></h1>
         <p><c:out value="${ad.description}" /></p>
+
         <form action="/ads" method="get">
             <input type="submit" name="showad" value="Back to Ads">
+
         </form>
     </div>
 </form>
