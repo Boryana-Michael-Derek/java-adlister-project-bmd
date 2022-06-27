@@ -32,10 +32,17 @@ public class  EditProfileServlet extends HttpServlet {
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String confirmPassword = request.getParameter("confirm_password");
+        if(!password.equals(confirmPassword)) {
+            request.setAttribute("passwordError", "The passwords do not match!");
+            request.setAttribute("username", user.getUsername());
+            request.setAttribute("email", user.getEmail());
+            request.getRequestDispatcher("/WEB-INF/profile/edit.jsp").forward(request, response);
+        }
 
         user.setUsername(username);
         user.setEmail(email);
-        if(!password.equals("")) {
+        if(!password.equals("") && password.equals(confirmPassword)) {
             user.setPassword(password);
         }
         DaoFactory.getUsersDao().update(user);
