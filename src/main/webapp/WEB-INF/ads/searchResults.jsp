@@ -1,19 +1,32 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
+
 <head>
-    <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Welcome to my site!" />
-    </jsp:include>
+    <title>Search Results</title>
+    <jsp:include page="../partials/head.jsp"/>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
-<body>
-    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-    <div class="container">
-        <h1>Welcome to the Adlister!</h1>
-    </div>
 
+<body>
+    <jsp:include page="../partials/navbar.jsp"/>
+    <h1>Search Results</h1>
+
+    <c:forEach var="ad" items="${adList}">
+        <div class="col-md-6">
+            <h2>${ad.getTitle()}</h2>
+            <p>${ad.getDescription()}</p>
+<%--            <p>${ad.price}</p>--%>
+<%--            <form action="/ads" method="get">--%>
+<%--                <button>Click for Details</button>--%>
+<%--                <input type="hidden" name="ad" value="${ad.id}">--%>
+<%--            </form>--%>
+        </div>
+    </c:forEach>
+
+    <%--<jsp:include page="/WEB-INF/partials/footer.jsp" />--%>
 
     <!-- These are bundles of JS plugins and extra css to accommodate nav tab functionality-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

@@ -1,3 +1,4 @@
+
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet(name = "controllers.AdsIndexServlet", urlPatterns = "/ads")
 public class AdsIndexServlet extends HttpServlet {
@@ -19,14 +22,34 @@ public class AdsIndexServlet extends HttpServlet {
 
 
 
-
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        long id = Long.parseLong(req.getParameter("showad"));
-        req.setAttribute("ad", DaoFactory.getAdsDao().findAdByAdId(id));
-        req.getRequestDispatcher("/WEB-INF/ads/show.jsp").forward(req, resp);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String search = request.getParameter("search");
+        long id = Long.parseLong(request.getParameter("showad"));
+//        long editId = Long.parseLong(request.getParameter("editAd"));
+        List<Ad> adList = null;
+
+        try {
+            adList = DaoFactory.getAdsDao().searchAds(search);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        request.getSession().setAttribute("search", adList);
+
+        try {
+            request.setAttribute("ad", DaoFactory.getAdsDao().adsByAdId(id));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        request.getRequestDispatcher("/WEB-INF/ads/show.jsp").forward(request, response);
+
+//        request.setAttribute("editAd", DaoFactory.getAdsDao().findAdByAdId(editId));
+//        request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);
 
 
+        response.sendRedirect("/ads/search"); //this line must be below line above it or else 500 error!
 
     }
 }
