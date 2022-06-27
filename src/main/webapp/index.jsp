@@ -12,17 +12,21 @@
 <style>
     body {
         font-family: "Creepster", sans-serif;
+        background-color: #8e8686;
     }
     #creepy-crawlers {
-        height:250px;
-        width: 400px;
+        height:187px;
+        width: 300px;
+        border: 1px solid black;
     }
 </style>
 <body>
-    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-    <div class="container">
-        <div class="row flex-direction-column justify-content-center">
+<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+    <div class="container ">
+        <div class="row justify-content-center">
             <h1>Welcome to CreepyList!</h1>
+        </div>
+        <div class="row justify-content-center">
             <img src="https://i0.wp.com/bloody-disgusting.com/wp-content/uploads/2021/08/crawlers.png?w=928&ssl=1" alt="creepy-crawlers" id="creepy-crawlers"/>
         </div>
 
