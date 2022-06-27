@@ -23,8 +23,14 @@
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
         </div>
-        <form action="/ads" method="post">
+        <form action="/ads/show" method="post">
             <button type="submit" name="showad" value="${ad.id}">View Ad</button>
+        </form>
+        <form action="/ads/edit" method="post">
+            <button type="submit" name="editAd" value="${ad.id}">Edit Ad</button>
+        </form>
+        <form action="/delete" method="post">
+            <button type="submit" name="deleteAd" value="${ad.id}">Delete Ad</button>
         </form>
     </c:forEach>
 

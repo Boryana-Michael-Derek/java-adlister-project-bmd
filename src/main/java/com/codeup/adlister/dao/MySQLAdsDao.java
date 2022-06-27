@@ -3,9 +3,6 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +53,24 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
+    public Long updateAd(Ad ad) {
+        try {
+            String insertQuery = "UPDATE ads SET user_id = ?, title = ?, description = ? WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, ad.getUserId());
+            stmt.setString(2, ad.getTitle());
+            stmt.setString(3, ad.getDescription());
+            stmt.setLong(4, ad.getId());
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+            return rs.getLong(1);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error editing an existing ad.", e);
+        }
+    }
+
+    @Override
     public List<Ad> searchAds(String search) throws SQLException {
         String searchQuery = "SELECT * FROM ads AS a JOIN ads_categories AS ac ON a.id = ac.ads_id JOIN categories AS c ON ac.categories_id = c.id WHERE c.category LIKE ? OR a.title LIKE ? OR a.description LIKE ?";
 
@@ -68,12 +83,21 @@ public class MySQLAdsDao implements Ads {
             return createAdsFromResults(rs);
     }
 
-    public List<Ad> adsById(Long id) throws SQLException {
+    public List<Ad> adsByUserId(Long id) throws SQLException {
         String query = "SELECT * FROM ads WHERE user_id = ?";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setLong(1, id);
         ResultSet rs = statement.executeQuery();
         return createAdsFromResults(rs);
+    }
+
+    public Ad adsByAdId(Long id) throws SQLException {
+        String query = "SELECT * FROM ads WHERE _id = ? LIMIT 1";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setLong(1, id);
+        ResultSet rs = statement.executeQuery();
+        Ad ad = extractAd(rs);
+        return ad;
     }
 
     private Ad extractAd(ResultSet rs) throws SQLException {
@@ -108,6 +132,20 @@ public class MySQLAdsDao implements Ads {
 
             throw new RuntimeException("Error finding ad by id", e);
 
+        }
+    }
+
+    @Override
+    public void editAd(Ad ad) {
+        try {
+            String query = "UPDATE ads SET title = ?, description = ? WHERE id = ?";
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, ad.getTitle());
+            statement.setString(2, ad.getDescription());
+            statement.setLong(3, ad.getId());
+            statement.executeUpdate();
+        } catch (SQLException e){
+            throw new RuntimeException("(MySQLAdsDao; editAd method): Error updating ad in database", e);
         }
     }
 

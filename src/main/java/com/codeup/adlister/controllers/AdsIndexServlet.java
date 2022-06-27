@@ -35,8 +35,6 @@ public class AdsIndexServlet extends HttpServlet {
 
         request.getSession().setAttribute("search", adList);
         request.setAttribute("ad", DaoFactory.getAdsDao().findAdByAdId(id));
-
-
         request.getRequestDispatcher("/WEB-INF/ads/show.jsp").forward(request, response);
         response.sendRedirect("ads/search"); //this line must be below line above it or else 500 error!
     }

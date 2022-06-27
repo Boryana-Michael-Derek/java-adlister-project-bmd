@@ -24,7 +24,7 @@ public class ViewProfileServlet extends HttpServlet {
 
         try {
 //            User userAd = DaoFactory.getUsersDao().findByUsername(user.getUsername());
-            request.setAttribute("ads", DaoFactory.getAdsDao().adsById(user.getId()));
+            request.setAttribute("ads", DaoFactory.getAdsDao().adsByUserId(user.getId()));
         } catch (SQLException e) {
             e.printStackTrace();
         }
