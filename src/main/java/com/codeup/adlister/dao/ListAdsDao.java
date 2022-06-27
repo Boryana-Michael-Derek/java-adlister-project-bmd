@@ -30,7 +30,7 @@ public class ListAdsDao implements Ads {
     }
 
     @Override
-    public List<Ad> adsById(Long id) throws SQLException {
+    public List<Ad> adsById(Long id) {
         return null;
     }
 
