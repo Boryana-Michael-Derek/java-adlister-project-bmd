@@ -22,7 +22,7 @@ public class AdsIndexServlet extends HttpServlet {
 
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String search = request.getParameter("search");
         List<Ad> adList = null;
         try {
@@ -34,8 +34,8 @@ public class AdsIndexServlet extends HttpServlet {
         response.sendRedirect("ads/search");
     
   
-        long id = Long.parseLong(req.getParameter("showad"));
-        req.setAttribute("ad", DaoFactory.getAdsDao().findAdByAdId(id));
-        req.getRequestDispatcher("/WEB-INF/ads/show.jsp").forward(req, resp);
+        long id = Long.parseLong(request.getParameter("showad"));
+        request.setAttribute("ad", DaoFactory.getAdsDao().findAdByAdId(id));
+        request.getRequestDispatcher("/WEB-INF/ads/show.jsp").forward(request, response);
     }
 }
