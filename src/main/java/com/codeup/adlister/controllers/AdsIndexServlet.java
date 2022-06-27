@@ -36,7 +36,12 @@ public class AdsIndexServlet extends HttpServlet {
 
         request.getSession().setAttribute("search", adList);
 
-        request.setAttribute("ad", DaoFactory.getAdsDao().findAdByAdId(id));
+        try {
+            request.setAttribute("ad", DaoFactory.getAdsDao().adsByAdId(id));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         request.getRequestDispatcher("/WEB-INF/ads/show.jsp").forward(request, response);
 
 //        request.setAttribute("editAd", DaoFactory.getAdsDao().findAdByAdId(editId));

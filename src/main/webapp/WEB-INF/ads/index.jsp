@@ -26,7 +26,7 @@
         <form action="/ads" method="post">
             <button type="submit" name="showad" value="${ad.id}">View Ad</button>
         </form>
-        <form action="/edit/${ad.id}" method="post">
+        <form action="/edit/${ad.id}" method="get">
             <button type="submit" name="editAd" value="${ad.id}">Edit Ad</button>
         </form>
         <form action="/delete" method="post">
