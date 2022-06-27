@@ -1,28 +1,33 @@
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark align-items-center">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark align-items-center">
 
-    <a class="align-self-center" id="logo" href="/ads"><h2>CreepyList</h2></a>
+    <a class="navbar-brand" id="logo" href="/ads"><h2>CreepyList</h2></a>
 
-    <div class="collapse navbar-collapse align-items-center justify-content-end" id="navbarSupportedContent">
-        <ul class="nav navbar-nav navbar-right">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse container justify-content-end" id="navbarSupportedContent">
+        <div>
+            <ul class="navbar-nav navbar-right">
             <li class="nav-item active">
-                <a class="nav-link mx-1" href="/ads/create"><h2>Create Ad</h2></a>
+                <a class="nav-link mx-1" href="/ads/create"><h5>Create Ad</h5></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link mx-1" href="/login"><h2>Login</h2></a>
+                <a class="nav-link mx-1" href="/login"><h5>Login</h5></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link mx-1" href="/register"><h2>Register</h2></a>
+                <a class="nav-link mx-1" href="/register"><h5>Register</h5></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link mx-1" href="/profile"><h2>Profile</h2></a>
+                <a class="nav-link mx-1" href="/profile"><h5>Profile</h5></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link mx-1" href="/logout"><h2>Logout</h2></a>
+                <a class="nav-link mx-1" href="/logout"><h5>Logout</h5></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle mx-1" href="/ads/search" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                    <h2>Categories</h2>
+                    <h5>Categories</h5>
                 </a>
                 <div class="dropdown-menu mx-1" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Cool</a>
@@ -34,14 +39,16 @@
                 </div>
             </li>
         </ul>
-        <form class="form-inline align-items-center">
-            <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-danger" type="submit">Search</button>
-        </form>
+        </div>
+        <div>
+            <form class="form-inline">
+                <input class="form-control mx-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-danger" type="submit">Search</button>
+            </form>
+        </div>
     </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+</div>
+
 
 </nav>
 
