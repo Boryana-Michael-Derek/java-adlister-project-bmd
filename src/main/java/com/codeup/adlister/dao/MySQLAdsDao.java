@@ -247,11 +247,14 @@ public class MySQLAdsDao implements Ads {
 
         @Override
         public Ad adsByAdId(Long id) throws SQLException {
-        String query = "SELECT * FROM ads WHERE id = ? LIMIT 1";
+        String query = "SELECT * FROM ads WHERE id = ? LIMIT 1;";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setLong(1, id);
         ResultSet rs = statement.executeQuery();
-        Ad ad = extractAd(rs);
+            Ad ad = new Ad();
+            while(rs.next()){
+        ad = extractAd(rs);
+            }
         return ad;
     }
 
@@ -293,8 +296,8 @@ public class MySQLAdsDao implements Ads {
     @Override
     public void updateAd(Ad ad) {
         try {
-            String query = "UPDATE ads SET title = ?, description = ? WHERE id = ?";
-            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            String query = "UPDATE ads SET title = ?, description = ? WHERE id = ?;";
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, ad.getTitle());
             statement.setString(2, ad.getDescription());
             statement.setLong(3, ad.getId());
@@ -304,5 +307,9 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-
+    public static void main(String[] args) throws SQLException {
+        Ad ad = DaoFactory.getAdsDao().adsByAdId(1L);
+        System.out.println(ad);
+        System.out.println(ad.getTitle() + " " + ad.getDescription());
+    }
 }

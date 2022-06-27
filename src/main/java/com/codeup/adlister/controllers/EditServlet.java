@@ -27,15 +27,18 @@ public class EditServlet extends HttpServlet {
         }
             long id = Long.parseLong(request.getPathInfo().substring(1));
             request.setAttribute("id", id);
+        System.out.println("id is " + id);
 
         try {
             Ad ad = DaoFactory.getAdsDao().adsByAdId(id);
             request.setAttribute("ad", ad);
-
+            request.setAttribute("userId", ad.getUserId());
+            request.setAttribute("title", ad.getTitle());
+            request.setAttribute("description", ad.getDescription());
         } catch (SQLException e) {
-            throw new RuntimeException("Edit Servlet doGet", e);
+            System.out.println(e);
+//            throw new RuntimeException("Edit Servlet doGet", e);
         }
-
         request.getRequestDispatcher("/WEB-INF/ads/editAd.jsp").forward(request, response);
     }
 
@@ -46,14 +49,23 @@ public class EditServlet extends HttpServlet {
                 return;
             }
 
-            long editAdId = Long.parseLong(request.getParameter("editAd"));
-            Ad ad = new Ad(editAdId,
-                    user.getId(),
-                    request.getParameter("title"),
-                    request.getParameter("description")
-            );
+            long editAdId = Long.parseLong(request.getPathInfo().substring(1));
+//            long editAdId = Long.parseLong(request.getParameter("editAd"));
+            long editUserId = user.getId();
+            String editTitle = request.getParameter("title");
+            String editDescription = request.getParameter("description");
 
-                DaoFactory.getAdsDao().updateAd(ad);
+            Ad ad = DaoFactory.getAdsDao().findAdByAdId(editAdId);
+            ad.setTitle(editTitle);
+            ad.setDescription(editDescription);
+
+//            Ad ad = new Ad(editAdId,
+//                    user.getId(),
+//                    request.getParameter("title"),
+//                    request.getParameter("description")
+//            );
+
+            DaoFactory.getAdsDao().updateAd(ad);
             request.setAttribute("ad", DaoFactory.getAdsDao().findAdByAdId(ad.getId()));
             request.getRequestDispatcher("/WEB-INF/ads/show.jsp").forward(request, response);
             response.sendRedirect("/ads");
