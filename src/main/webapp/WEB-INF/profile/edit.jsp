@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
@@ -22,6 +23,13 @@
             <label for="password">Password:</label>
             <input id="password" name="password" class="form-control" type="password">
         </div>
+        <div class="form-group">
+            <label for="confirm_password">Confirm Password</label>
+            <input id="confirm_password" name="confirm_password" class="form-control" type="password">
+        </div>
+<%--        <c:if test="${passwordError}">--%>
+            <c:out value="${passwordError}"/>
+<%--        </c:if>--%>
         <input type="submit" class="btn btn-block btn-primary">
     </form>
 </div>
