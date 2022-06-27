@@ -21,6 +21,7 @@ public class AdsIndexServlet extends HttpServlet {
     }
 
 
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String search = request.getParameter("search");
@@ -47,6 +48,8 @@ public class AdsIndexServlet extends HttpServlet {
 //        request.setAttribute("editAd", DaoFactory.getAdsDao().findAdByAdId(editId));
 //        request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);
 
+
         response.sendRedirect("/ads/search"); //this line must be below line above it or else 500 error!
+
     }
 }

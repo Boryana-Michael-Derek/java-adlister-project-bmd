@@ -23,6 +23,10 @@
 
     <div class="collapse navbar-collapse align-items-center" id="navbarSupportedContent">
         <ul class="nav navbar-nav navbar-right">
+
+            <li><a href="/login?from=${pageContext.request.requestURI}">Login</a></li>
+            <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
+
             <li class="nav-item active">
                 <a class="nav-link" href="/ads/create">Create Ad</a>
             </li>
@@ -46,6 +50,7 @@
                     <a class="dropdown-item" href="#">Boring</a>
                 </div>
             </li>
+
         </ul>
         <form class="form-inline my-2 my-lg-0 align-items-center">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
