@@ -15,13 +15,14 @@ public interface Ads {
 
 //    Ad showOneAd(long id);
 
-    Ad findAdByAdId(long id);
+    Ad adsByAdId(Long id) throws SQLException;
+
+    Ad findAdByAdId(Long id);
 
     Long updateAd(Ad ad);
 
     List<Ad> searchAds(String search) throws SQLException;
 
-    Ad adsByAdId(Long id) throws SQLException;
 
     void editAd(Ad ad);
 }

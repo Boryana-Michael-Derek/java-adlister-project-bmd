@@ -23,8 +23,8 @@
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
         </div>
-        <form action="/ads/show" method="post">
-            <button type="submit" name="showad" value="${ad.id}">View Ad</button>
+        <form action="/ads/show" method="GET">
+            <button type="submit" name="showAd" value="${ad.id}">View Ad</button>
         </form>
         <form action="/ads/edit" method="post">
             <button type="submit" name="editAd" value="${ad.id}">Edit Ad</button>

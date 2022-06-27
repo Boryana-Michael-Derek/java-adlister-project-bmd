@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 
 @WebServlet(name = "controllers.ShowAdServlet", urlPatterns = "/ads/show")
@@ -18,11 +19,17 @@ public class ShowAdServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Long singleAd = Long.parseLong(request.getParameter("showad"));
+        Long singleAd = Long.parseLong(request.getParameter("showAd"));
 
-        Ad viewSingleAd = DaoFactory.getAdsDao().findAdByAdId(singleAd);
 
-        request.setAttribute("showSingleAd", viewSingleAd);
+        Ad viewSingleAd = null;
+        try {
+            viewSingleAd = DaoFactory.getAdsDao().adsByAdId(singleAd);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        request.setAttribute("ad", viewSingleAd);
         request.getRequestDispatcher("/WEB-INF/ads/show.jsp").forward(request, response);
     }
 
