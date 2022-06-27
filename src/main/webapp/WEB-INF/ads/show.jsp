@@ -16,7 +16,7 @@
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
-<form class="container bg-danger">
+<form class="container bg-light">
     <div class="col-md-12">
         <h1><c:out value="${ad.title}" /></h1>
         <p><c:out value="${ad.description}" /></p>
