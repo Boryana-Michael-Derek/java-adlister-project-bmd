@@ -18,7 +18,7 @@
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
         </div>
-        <form action="/ads" method="post">
+        <form action="${pageContext.request.contextPath}/ads" method="post">
             <button type="submit" name="showad" value="${ad.id}">Show Ad</button>
         </form>
     </c:forEach>
