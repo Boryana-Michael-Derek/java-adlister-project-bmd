@@ -210,7 +210,11 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public List<Ad> adsByUserId(Long id) throws SQLException {
-        return null;
+        String query = "SELECT * FROM ads WHERE user_id = ?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setLong(1, id);
+        ResultSet rs = statement.executeQuery();
+        return createAdsFromResults(rs);
     }
 
 
@@ -287,8 +291,17 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
-    public Long updateAd(Ad ad) {
-        return null;
+    public void updateAd(Ad ad) {
+        try {
+            String query = "UPDATE ads SET title = ?, description = ? WHERE id = ?";
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, ad.getTitle());
+            statement.setString(2, ad.getDescription());
+            statement.setLong(3, ad.getId());
+            statement.executeUpdate();
+        } catch (SQLException e){
+            throw new RuntimeException("Error updating ads in MySQLAdsDao", e);
+        }
     }
 
 

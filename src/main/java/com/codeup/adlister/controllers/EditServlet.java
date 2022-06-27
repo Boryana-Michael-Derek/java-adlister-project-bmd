@@ -15,30 +15,32 @@ import java.sql.SQLException;
 
 import static java.lang.Integer.parseInt;
 
-@WebServlet(name = "controllers.EditServlet", urlPatterns = "/ads/edit")
+@WebServlet(name = "controllers.EditServlet", urlPatterns = "/edit/*")
 public class EditServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         User user = (User) request.getSession().getAttribute("user");
-
         if (user == null) {
             response.sendRedirect("/login");
             return;
         }
-            long id = Long.parseLong(request.getParameter("editAd"));
+            long id = Long.parseLong(request.getPathInfo().substring(1));
+            request.setAttribute("id", id);
 
         try {
-            request.setAttribute("editThisAd", DaoFactory.getAdsDao().adsByAdId(id));
+            Ad ad = DaoFactory.getAdsDao().adsByAdId(id);
+            request.setAttribute("ad", ad);
+
         } catch (SQLException e) {
             throw new RuntimeException("Edit Servlet doGet", e);
         }
+
         request.getRequestDispatcher("/WEB-INF/ads/editAd.jsp").forward(request, response);
     }
 
         protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             User user = (User) request.getSession().getAttribute("user");
-
             if (user == null) {
                 response.sendRedirect("/login");
                 return;
@@ -50,9 +52,10 @@ public class EditServlet extends HttpServlet {
                     request.getParameter("title"),
                     request.getParameter("description")
             );
-            DaoFactory.getAdsDao().editAd(ad);
+
+                DaoFactory.getAdsDao().updateAd(ad);
             request.setAttribute("ad", DaoFactory.getAdsDao().findAdByAdId(ad.getId()));
             request.getRequestDispatcher("/WEB-INF/ads/show.jsp").forward(request, response);
-            response.sendRedirect("/show");
+            response.sendRedirect("/ads");
     }
 }

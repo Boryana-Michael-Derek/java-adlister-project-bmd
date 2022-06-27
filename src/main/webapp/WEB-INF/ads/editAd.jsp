@@ -10,14 +10,14 @@
 <body>
 <div class="container">
     <h1>Edit this Ad</h1>
-    <form action="/ads/edit" method="post">
+    <form action="/edit/${ad.id}" method="post">
         <div class="form-group">
             <label for="title">Title</label>
-            <input id="title" name="title" class="form-control" type="text" placeholder="{ad.title}">
+            <input id="title" name="title" class="form-control" type="text" placeholder="${ad.title}">
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea id="description" name="description" class="form-control" type="text" placeholder="{ad.description}"></textarea>
+            <textarea id="description" name="description" class="form-control" type="text" placeholder="${ad.description}"></textarea>
         </div>
         <input type="submit" class="btn btn-block btn-primary">
     </form>

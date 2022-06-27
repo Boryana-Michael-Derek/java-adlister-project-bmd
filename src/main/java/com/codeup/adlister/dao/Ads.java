@@ -19,7 +19,7 @@ public interface Ads {
 
     Ad findAdByAdId(Long id);
 
-    Long updateAd(Ad ad);
+    void updateAd(Ad ad);
 
     List<Ad> searchAds(String search) throws SQLException;
 

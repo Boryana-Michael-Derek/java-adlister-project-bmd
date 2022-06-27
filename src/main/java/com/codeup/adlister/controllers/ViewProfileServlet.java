@@ -23,8 +23,8 @@ public class ViewProfileServlet extends HttpServlet {
 
 
         try {
-//            User userAd = DaoFactory.getUsersDao().findByUsername(user.getUsername());
-            request.setAttribute("ads", DaoFactory.getAdsDao().adsByUserId(user.getId()));
+            User userAd = DaoFactory.getUsersDao().findByUsername(user.getUsername());
+            request.setAttribute("ads", DaoFactory.getAdsDao().adsByUserId(userAd.getId()));
         } catch (SQLException e) {
             e.printStackTrace();
         }
