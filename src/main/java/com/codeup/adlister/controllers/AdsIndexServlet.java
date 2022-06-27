@@ -24,25 +24,31 @@ public class AdsIndexServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String search = request.getParameter("search");
-        long id = Long.parseLong(request.getParameter("showad"));
+        String middle = request.getParameter("showad");
+        long id = 0;
+        if (middle != null) {
+            id = Long.parseLong(middle);
+        }
 //        long editId = Long.parseLong(request.getParameter("editAd"));
         List<Ad> adList = null;
 
         try {
             adList = DaoFactory.getAdsDao().searchAds(search);
         } catch (SQLException e) {
+            System.out.println("did not get adList from search input");
             e.printStackTrace();
         }
 
         request.getSession().setAttribute("search", adList);
 
-        try {
-            request.setAttribute("ad", DaoFactory.getAdsDao().adsByAdId(id));
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (middle != null) {
+            try {
+                request.setAttribute("ad", DaoFactory.getAdsDao().adsByAdId(id));
+                request.getRequestDispatcher("/WEB-INF/ads/show.jsp").forward(request, response);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-
-        request.getRequestDispatcher("/WEB-INF/ads/show.jsp").forward(request, response);
 
 //        request.setAttribute("editAd", DaoFactory.getAdsDao().findAdByAdId(editId));
 //        request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);

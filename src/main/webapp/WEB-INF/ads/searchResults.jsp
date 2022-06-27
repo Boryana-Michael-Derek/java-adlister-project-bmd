@@ -24,15 +24,9 @@
         <div class="col-md-6">
             <h2>${ad.getTitle()}</h2>
             <p>${ad.getDescription()}</p>
-<%--            <p>${ad.price}</p>--%>
-<%--            <form action="/ads" method="get">--%>
-<%--                <button>Click for Details</button>--%>
-<%--                <input type="hidden" name="ad" value="${ad.id}">--%>
-<%--            </form>--%>
         </div>
     </c:forEach>
 
-    <%--<jsp:include page="/WEB-INF/partials/footer.jsp" />--%>
 
     <!-- These are bundles of JS plugins and extra css to accommodate nav tab functionality-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
