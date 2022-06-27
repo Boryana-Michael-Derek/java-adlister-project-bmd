@@ -28,7 +28,6 @@ public class ViewProfileServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/profile/show.jsp").forward(request, response);
     }
 }

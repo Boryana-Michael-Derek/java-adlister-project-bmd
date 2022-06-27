@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 
 <html>
 <head>
@@ -13,7 +13,7 @@
     <div class="container">
         <h1>Welcome, ${sessionScope.user.username}!</h1>
         <h3>${sessionScope.user.email}</h3>
-
+        <button onclick="window.location='/profile/edit'">Edit Profile</button>
     </div>
 
     <div class="container">
