@@ -13,6 +13,8 @@ public interface Ads {
 
     List<Ad> adsById(Long id) throws SQLException;
 
+    List<Ad> adsByUserId(Long id) throws SQLException;
+
     //    Ad showOneAd(long id);
 
     Ad adsByAdId(Long id) throws SQLException;

@@ -13,9 +13,11 @@
     body {
         font-family: "Creepster", sans-serif;
     }
-    h1 {
+    h1, h2, p {
         text-align: center;
     }
+
+
 </style>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
@@ -36,7 +38,7 @@
         <h1>Here are your ads!</h1>
         <br>
         <c:forEach var="ad" items="${ads}">
-            <div class="col-md-4">
+            <div class="col-sm-12 col-md-6 col-xl-4">
 <%--                <div class="row">--%>
 <%--                    <div class="col-md-4">--%>
                 <h2>${ad.title}</h2>

@@ -37,7 +37,7 @@
 <%--        <c:if test="${passwordError}">--%>
             <c:out value="${passwordError}"/>
 <%--        </c:if>--%>
-        <input type="submit" class="btn btn-block btn-primary">
+        <input type="submit" class="btn btn-block btn-dark">
     </form>
 </div>
 
