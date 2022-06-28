@@ -15,6 +15,8 @@ public interface Ads {
 
 //    Ad showOneAd(long id);
 
+
+
     Ad adsByAdId(Long id) throws SQLException;
 
     Ad findAdByAdId(Long id);
@@ -25,4 +27,5 @@ public interface Ads {
 
 
     void editAd(Ad ad);
+
 }
