@@ -84,6 +84,7 @@
                         Delete Ad
                     </button>
                 </form>
+
             </div>
         </div>
 <%--        </div>--%>
