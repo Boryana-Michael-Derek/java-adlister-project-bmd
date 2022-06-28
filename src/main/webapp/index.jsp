@@ -12,7 +12,7 @@
 <style>
     body {
         font-family: "Creepster", sans-serif;
-        background-color: #8e8686;
+        /*background-color: #8e8686;*/
     }
     #creepy-crawlers {
         height:187px;
@@ -29,6 +29,9 @@
         <div class="row justify-content-center">
             <img src="https://i0.wp.com/bloody-disgusting.com/wp-content/uploads/2021/08/crawlers.png?w=928&ssl=1" alt="creepy-crawlers" id="creepy-crawlers"/>
         </div>
+<%--        <div class="row justify-content-center">--%>
+<%--            <p>Weird and Creepy are our specialty!</p>--%>
+<%--        </div>--%>
 
     </div>
 

@@ -16,6 +16,7 @@
     }
 </style>
 <body>
+<jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <div class="container">
     <h1>Edit this Ad</h1>
     <form action="/edit/${ad.id}" method="post">

@@ -17,7 +17,7 @@
 <body>
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
-        <h1>GIVE US YOUR PERSONAL INFORMATION</h1>
+        <h1 class="text-center">GIVE US YOUR PERSONAL INFORMATION</h1>
         <form action="/register" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -42,7 +42,7 @@
 <c:if test="${passwordError != null}" >
 <c:out value="${passwordError}"/>
 </c:if>
-            <input type="submit" class="btn btn-primary btn-block">
+            <input type="submit" class="btn btn-danger btn-block">
         </form>
     </div>
 
