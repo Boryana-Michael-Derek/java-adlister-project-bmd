@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: michaelkestler
-  Date: 6/22/22
-  Time: 1:11 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -19,18 +12,27 @@
 <style>
     body {
         font-family: "Creepster", sans-serif;
+        font-size: medium;
     }
+
 </style>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
 <%--<form class="container bg-danger">--%>
-    <div class="col-md-12">
-        <img src="${ad.picture_URL}">
-        <h1>${ad.title}</h1>
-        <p>${ad.description}</p>
+
+   <div class="container-fluid">
+       <div class="col-6 mx-auto">
+       <div class="jumbotron">
+        <h1 class="display-6 ">${ad.title}</h1>
+        <p class="lead">${ad.description}</p>
+        <form action="/edit/${ad.id}" method="get">
+            <button type="submit" class="btn btn-dark btn-lg" name="editAd" value="${ad.id}">Edit Ad</button>
+        </form>
         <a href="/ads">Back to Ads</a>
     </div>
+   </div>
+   </div>
 <%--</form>--%>
 
 

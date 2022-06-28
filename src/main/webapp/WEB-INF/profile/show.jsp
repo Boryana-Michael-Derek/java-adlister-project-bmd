@@ -13,24 +13,52 @@
     body {
         font-family: "Creepster", sans-serif;
     }
+    h1 {
+        text-align: center;
+    }
 </style>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container justify-content-center">
         <h1>Welcome, ${sessionScope.user.username}!</h1>
-        <h3>${sessionScope.user.email}</h3>
-        <button onclick="window.location='/profile/edit'">Edit Profile</button>
+<%--        <h3>${sessionScope.user.email}</h3>--%>
+
+    </div>
+
+    <div class="container">
+        <div class="col-md-12 text-right">
+            <button type="button" class="btn btn-dark" onclick="window.location='/profile/edit'">Edit Profile</button>
+        </div>
     </div>
 
     <div class="container">
         <h1>Here are your ads!</h1>
-
+        <br>
         <c:forEach var="ad" items="${ads}">
-            <div class="col-md-6">
+            <div class="col-md-4">
+<%--                <div class="row">--%>
+<%--                    <div class="col-md-4">--%>
                 <h2>${ad.title}</h2>
                 <p>${ad.description}</p>
-            </div>
+                <form action="/ads" method="post">
+                    <button type="submit" class="btn btn-dark form-control btn-block" name="showAd"
+                            value="${ad.id}">View
+                        Ad</button>
+                </form>
+                <form action="/edit/${ad.id}" method="get">
+                    <button type="submit" class="btn btn-dark form-control btn-block" name="editAd"
+                            value="${ad.id}">Edit
+                        Ad</button>
+                </form>
+                <form action="/delete" method="post">
+                    <button type="submit" class="btn btn-dark form-control btn-block" name="deleteAd"
+                            value="${ad.id}">Delete
+                        Ad</button>
+                </form>
+<%--            </div>--%>
+<%--        </div>--%>
+    </div>
         </c:forEach>
     </div>
 
