@@ -7,6 +7,7 @@
         <jsp:param name="title" value="Edit this Ad" />
     </jsp:include>
 
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Creepster">
 </head>
@@ -16,6 +17,7 @@
     }
 </style>
 <body>
+<jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <div class="container">
     <h1>Edit this Ad</h1>
     <form action="/edit/${ad.id}" method="post">
