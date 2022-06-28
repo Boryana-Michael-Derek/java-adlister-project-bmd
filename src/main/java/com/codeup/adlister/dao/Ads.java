@@ -21,6 +21,8 @@ public interface Ads {
 
     void updateAd(Ad ad);
 
+    List<Ad> adsByUserId(Long id) throws SQLException;
+
     List<Ad> searchAds(String search) throws SQLException;
 
 
