@@ -1,3 +1,4 @@
+
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
@@ -10,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.SQLOutput;
 import java.util.List;
 
 @WebServlet(name = "controllers.AdsIndexServlet", urlPatterns = "/ads")
@@ -22,20 +22,37 @@ public class AdsIndexServlet extends HttpServlet {
 
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String search = request.getParameter("search");
+        String middle = request.getParameter("showad");
+        long id = 0;
+        if (middle != null) {
+            id = Long.parseLong(middle);
+        }
+//        long editId = Long.parseLong(request.getParameter("editAd"));
         List<Ad> adList = null;
+
         try {
             adList = DaoFactory.getAdsDao().searchAds(search);
         } catch (SQLException e) {
+            System.out.println("did not get adList from search input");
             e.printStackTrace();
         }
+
         request.getSession().setAttribute("search", adList);
-        response.sendRedirect("ads/search");
-    
-  
-        long id = Long.parseLong(req.getParameter("showad"));
-        req.setAttribute("ad", DaoFactory.getAdsDao().findAdByAdId(id));
-        req.getRequestDispatcher("/WEB-INF/ads/show.jsp").forward(req, resp);
+
+        if (middle != null) {
+            try {
+                request.setAttribute("ad", DaoFactory.getAdsDao().adsByAdId(id));
+                request.getRequestDispatcher("/WEB-INF/ads/show.jsp").forward(request, response);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+//        request.setAttribute("editAd", DaoFactory.getAdsDao().findAdByAdId(editId));
+//        request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);
+
+        response.sendRedirect("/ads/search"); //this line must be below line above it or else 500 error!
     }
 }
