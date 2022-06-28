@@ -18,7 +18,7 @@
 
 <body>
     <jsp:include page="../partials/navbar.jsp"/>
-    <h1>Search Results</h1>
+                <h1 class="text-center">Search Results</h1>
 
     <c:forEach var="ad" items="${adList}">
         <div class="col-md-6">
