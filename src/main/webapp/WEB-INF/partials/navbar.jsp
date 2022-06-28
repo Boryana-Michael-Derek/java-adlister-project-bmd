@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark align-items-center">
 
-    <a class="navbar-brand" id="logo" href="/ads">CreepyList</a>
+    <a class="navbar-brand align-self-center" id="logo" href="/ads"><div class="align-self-center">CreepyList</div></a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -29,12 +29,12 @@
                     Categories
                 </a>
                 <div class="dropdown-menu mx-1" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Cool</a>
-                    <a class="dropdown-item" href="#">Weird</a>
-                    <a class="dropdown-item" href="#">Boring</a>
-                    <a class="dropdown-item" href="#">Random</a>
-                    <a class="dropdown-item" href="#">New</a>
-                    <a class="dropdown-item" href="#">Old</a>
+                    <a class="dropdown-item" href="/ads/search?search=cool" class="search" value="cool">Cool</a>
+                    <a class="dropdown-item" href="/ads/search?search=weird" class="search" value="weird">Weird</a>
+                    <a class="dropdown-item" href="/ads/search?search=boring" class="search" value="boring">Boring</a>
+                    <a class="dropdown-item" href="/ads/search?search=random" class="search" value="random">Random</a>
+                    <a class="dropdown-item" href="/ads/search?search=new" class="search" value="new">New</a>
+                    <a class="dropdown-item" href="/ads/search?search=old" class="search" value="old">Old</a>
                 </div>
             </li>
         </ul>
