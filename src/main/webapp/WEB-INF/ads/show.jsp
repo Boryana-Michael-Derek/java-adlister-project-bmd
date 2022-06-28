@@ -26,6 +26,7 @@
 
 <%--<form class="container bg-danger">--%>
     <div class="col-md-12">
+        <img src="${ad.picture_URL}">
         <h1>${ad.title}</h1>
         <p>${ad.description}</p>
         <a href="/ads">Back to Ads</a>

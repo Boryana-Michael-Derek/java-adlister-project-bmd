@@ -15,13 +15,30 @@
     body {
         font-family: "Creepster", sans-serif;
     }
+
     .buttons {
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
     }
+
     h1 {
         display: flex;
         justify-content: center;
+    }
+
+    /*.card-columns { @include media-breakpoint-only(sm) {*/
+    /*    column-count: 4;*/
+    /*}*/
+    /*}*/
+    /*.card {*/
+    /*    min-width: 100px;*/
+    /*}*/
+    @media (min-width: 768px){
+        .card {
+            /*column-count: 3;*/
+            min-width: 100%;
+            padding: 10px;
+        }
     }
 </style>
 <body>
@@ -33,36 +50,44 @@
 </form>
 <div class="container">
     <h1>Browse our creepy stuff</h1>
-
     <div class="card-deck">
-        <div class="card">
-            <div class="card-body text-center">
-                <c:forEach var="ad" items="${ads}">
-                <div class="col-md-12">
-                    <h2><a href="/ads/show.jsp">${ad.title}</a></h2>
-                    <h2>${ad.title}</h2>
-                    <p>${ad.description}</p>
-                    <div class=" buttons">
-                        <form style="padding: 5px" action="/ads" method="post">
-                            <button class="inline" id="view-ad" type="submit" name="showad" value="${ad.id}">View Ad
-                            </button>
-                        </form>
-                        <form style="padding: 5px" action="/edit/${ad.id}" method="get">
-                            <button class="inline" id="edit-ad" type="submit" name="editAd" value="${ad.id}">Edit Ad</button>
-                        </form>
-                        <form style="padding: 5px" action="/delete" method="post">
-                            <button class="inline" id="delete-ad" type="submit" name="deleteAd" value="${ad.id}">
-                                Delete Ad
-                            </button>
-                        </form>
-                    </c:forEach>
+        <%--            <div class="card-deck">--%>
+        <c:forEach var="ad" items="${ads}">
+            <div class="row">
+            <div class="card col-md-4">
+                <div class="card-body text-center">
+<%--                    <div class="flex-column">--%>
+                        <h2><a href="/ads/show.jsp">${ad.title}</a></h2>
+                        <h2>${ad.title}</h2>
+                        <p>${ad.description}</p>
+                        <div class=" buttons">
+                            <form style="padding: 5px" action="/ads" method="post">
+                                <button class="inline" id="view-ad" type="submit" name="showad"
+                                        value="${ad.id}">
+                                    View Ad
+                                </button>
+                            </form>
+                            <form style="padding: 5px" action="/edit/${ad.id}" method="get">
+                                <button class="inline" id="edit-ad" type="submit" name="editAd"
+                                        value="${ad.id}">
+                                    Edit Ad
+                                </button>
+                            </form>
+                            <form style="padding: 5px" action="/delete" method="post">
+                                <button class="inline" id="delete-ad" type="submit" name="deleteAd"
+                                        value="${ad.id}">
+                                    Delete Ad
+                                </button>
+                            </form>
+                        </div>
                     </div>
-
                 </div>
             </div>
-        </div>
+        </c:forEach>
+        <%--            </div>--%>
     </div>
 </div>
+<%--</div>--%>
 
 
 <!-- These are bundles of JS plugins and extra css to accommodate nav tab functionality-->
