@@ -14,6 +14,8 @@
 <style>
     body {
         font-family: "Creepster", sans-serif;
+        background-size: cover;
+        background: url("https://images.pexels.com/photos/3454270/pexels-photo-3454270.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2") no-repeat scroll center;
     }
 </style>
 <body>
