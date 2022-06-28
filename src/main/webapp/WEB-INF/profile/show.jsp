@@ -26,24 +26,27 @@
     <div class="container">
         <div class="col-md-12 text-right">
             <button type="button" class="btn btn-dark" onclick="window.location='/profile/edit'">Edit Profile</button>
-
+        </div>
     </div>
 
     <div class="container">
         <h1>Here are your ads!</h1>
-
+        <br>
         <c:forEach var="ad" items="${ads}">
             <div class="col-md-4">
                 <h2>${ad.title}</h2>
                 <p>${ad.description}</p>
                 <form action="/ads" method="post">
-                    <button type="submit" name="showad" value="${ad.id}">View Ad</button>
+                    <button type="submit" class="btn btn-dark float-right" name="showad" value="${ad.id}">View
+                        Ad</button>
                 </form>
                 <form action="/edit/${ad.id}" method="get">
-                    <button type="submit" name="editAd" value="${ad.id}">Edit Ad</button>
+                    <button type="submit" class="btn btn-dark float-right" name="editAd" value="${ad.id}">Edit
+                        Ad</button>
                 </form>
                 <form action="/delete" method="post">
-                    <button type="submit" name="deleteAd" value="${ad.id}">Delete Ad</button>
+                    <button type="submit" class="btn btn-dark float-left" name="deleteAd" value="${ad.id}">Delete
+                        Ad</button>
                 </form>
             </div>
         </c:forEach>
