@@ -73,7 +73,7 @@
                                     Edit Ad
                                 </button>
                             </form>
-                            <form style="padding: 5px" action="/delete" method="post">
+                            <form style="padding: 5px" action="/delete/${ad.id}" method="get">
                                 <button class="inline" id="delete-ad" type="submit" name="deleteAd"
                                         value="${ad.id}">
                                     Delete Ad

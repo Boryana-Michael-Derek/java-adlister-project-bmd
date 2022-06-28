@@ -238,6 +238,7 @@ public class MySQLAdsDao implements Ads {
 
     }
 
+
     public List<Ad> adsById(Long id) throws SQLException {
         String query = "SELECT * FROM ads WHERE user_id = ?";
         PreparedStatement statement = connection.prepareStatement(query);
@@ -305,6 +306,20 @@ public class MySQLAdsDao implements Ads {
             statement.executeUpdate();
         } catch (SQLException e){
             throw new RuntimeException("Error updating ads in MySQLAdsDao", e);
+        }
+    }
+
+    @Override
+    public void delete(Long id) {
+        try {
+            String insertQuery = "DELETE FROM ads_categories WHERE ads_id = ?;";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, id);
+            String insertQuery2 = "DELETE FROM ads WHERE id = ?;";
+            PreparedStatement stmt2 = connection.prepareStatement(insertQuery2, Statement.RETURN_GENERATED_KEYS);
+            stmt2.setLong(1, id);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting ad.", e);
         }
     }
 

@@ -1,18 +1,17 @@
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark align-items-center">
 
-    <a class="navbar-brand align-self-center" id="logo" href="/ads"><div class="align-self-center">CreepyList</div></a>
+    <a class="navbar-brand d-flex align-items-center" id="logo" href="/ads">
+        <div style="color:red;font-size:2em">CreepyList</div>
+    </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+    <div class="collapse navbar-collapse d-flex justify-content-end align-items-center" id="navbarSupportedContent">
+            <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link mx-1" href="/ads/create">Create Ad</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link mx-1" href="/login">Login</a>
             </li>
             <li class="nav-item">
@@ -24,8 +23,11 @@
             <li class="nav-item">
                 <a class="nav-link mx-1" href="/logout">Logout</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle mx-1" href="/ads/search" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                <li class="nav-item">
+                    <a class="nav-link mx-1" href="/ads/create">Create Ad</a>
+                </li>
+            <li class="nav-item dropdown ml-1 mr-5">
+                <a class="nav-link dropdown-toggle" href="/ads/search" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                     Categories
                 </a>
                 <div class="dropdown-menu mx-1" aria-labelledby="navbarDropdown">
@@ -38,7 +40,7 @@
                 </div>
             </li>
         </ul>
-        <form action="/ads" method="POST" class="form-inline my-2 my-sm-0">
+        <form action="/ads" method="POST" class="form-inline ml-1 my-2 my-sm-0">
             <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search">
             <button class="btn btn-outline-danger" type="submit">Search</button>
         </form>
