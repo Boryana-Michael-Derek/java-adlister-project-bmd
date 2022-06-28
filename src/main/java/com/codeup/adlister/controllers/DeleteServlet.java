@@ -1,7 +1,7 @@
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
-import com.codeup.adlister.models.Ad;
+
 import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
@@ -10,12 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 
 
-import static java.lang.Integer.parseInt;
-
-@WebServlet(name = "controllers.EditServlet", urlPatterns = "/delete/*")
+@WebServlet(name = "controllers.DeleteServlet", urlPatterns = "/delete/*")
 public class DeleteServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

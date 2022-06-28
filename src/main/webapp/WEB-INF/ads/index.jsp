@@ -67,7 +67,7 @@
             <p style="color:red">${ad.description}</p>
             <div class=" buttons">
                 <form style="padding: 5px" action="/ads" method="post">
-                    <button class="inline" id="view-ad" type="submit" name="showad"
+                    <button class="inline" id="view-ad" type="submit" name="showAd"
                             value="${ad.id}">
                         View Ad
                     </button>
@@ -78,7 +78,7 @@
                         Edit Ad
                     </button>
                 </form>
-                <form style="padding: 5px" action="/delete" method="post">
+                <form style="padding: 5px" action="/delete/${ad.id}" method="get">
                     <button class="inline" id="delete-ad" type="submit" name="deleteAd"
                             value="${ad.id}">
                         Delete Ad

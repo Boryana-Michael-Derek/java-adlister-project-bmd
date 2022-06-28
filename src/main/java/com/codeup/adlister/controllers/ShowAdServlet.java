@@ -31,6 +31,7 @@ public class ShowAdServlet extends HttpServlet {
 
         request.setAttribute("ad", viewSingleAd);
         request.getRequestDispatcher("/WEB-INF/ads/show.jsp").forward(request, response);
+
     }
 
 }
