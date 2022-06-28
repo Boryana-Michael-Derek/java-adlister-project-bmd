@@ -20,7 +20,13 @@
     <div class="container justify-content-center">
         <h1>Welcome, ${sessionScope.user.username}!</h1>
 <%--        <h3>${sessionScope.user.email}</h3>--%>
-        <button onclick="window.location='/profile/edit'">Edit Profile</button>
+
+    </div>
+
+    <div class="container">
+        <div class="col-md-12 text-right">
+            <button type="button" class="btn btn-dark" onclick="window.location='/profile/edit'">Edit Profile</button>
+
     </div>
 
     <div class="container">
