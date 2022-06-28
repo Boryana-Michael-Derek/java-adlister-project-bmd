@@ -30,6 +30,15 @@
             <div class="col-md-6">
                 <h2>${ad.title}</h2>
                 <p>${ad.description}</p>
+                <form action="/ads" method="post">
+                    <button type="submit" name="showad" value="${ad.id}">View Ad</button>
+                </form>
+                <form action="/edit/${ad.id}" method="get">
+                    <button type="submit" name="editAd" value="${ad.id}">Edit Ad</button>
+                </form>
+                <form action="/delete" method="post">
+                    <button type="submit" name="deleteAd" value="${ad.id}">Delete Ad</button>
+                </form>
             </div>
         </c:forEach>
     </div>
