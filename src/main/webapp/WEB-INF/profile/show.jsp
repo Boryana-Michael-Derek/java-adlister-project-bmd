@@ -13,6 +13,9 @@
     body {
         font-family: "Creepster", sans-serif;
     }
+    h1 {
+        text-align: center;
+    }
 </style>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
@@ -34,10 +37,12 @@
         <br>
         <c:forEach var="ad" items="${ads}">
             <div class="col-md-4">
+<%--                <div class="row">--%>
+<%--                    <div class="col-md-4">--%>
                 <h2>${ad.title}</h2>
                 <p>${ad.description}</p>
                 <form action="/ads" method="post">
-                    <button type="submit" class="btn btn-dark form-control btn-block" name="showad"
+                    <button type="submit" class="btn btn-dark form-control btn-block" name="showAd"
                             value="${ad.id}">View
                         Ad</button>
                 </form>
@@ -51,7 +56,9 @@
                             value="${ad.id}">Delete
                         Ad</button>
                 </form>
-            </div>
+<%--            </div>--%>
+<%--        </div>--%>
+    </div>
         </c:forEach>
     </div>
 

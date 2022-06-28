@@ -24,7 +24,7 @@ public class AdsIndexServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String search = request.getParameter("search");
-        String middle = request.getParameter("showad");
+        String middle = request.getParameter("showAd");
         long id = 0;
         if (middle != null) {
             id = Long.parseLong(middle);

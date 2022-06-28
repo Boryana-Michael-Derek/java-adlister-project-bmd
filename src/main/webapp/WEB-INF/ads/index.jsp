@@ -28,12 +28,12 @@
 
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-12">
-            <h2><a href="/ads/show.jsp">${ad.title}</a></h2>
+<%--            <h2><a href="/ads/show.jsp">${ad.title}</a></h2>--%>
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
         </div>
         <form action="/ads" method="post">
-            <button type="submit" name="showad" value="${ad.id}">View Ad</button>
+            <button type="submit" name="showAd" value="${ad.id}">View Ad</button>
         </form>
         <form action="/edit/${ad.id}" method="get">
             <button type="submit" name="editAd" value="${ad.id}">Edit Ad</button>
