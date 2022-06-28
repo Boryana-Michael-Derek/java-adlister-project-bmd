@@ -28,6 +28,9 @@
     <div class="col-md-12">
         <h1>${ad.title}</h1>
         <p>${ad.description}</p>
+        <form action="/edit/${ad.id}" method="get">
+            <button type="submit" name="editAd" value="${ad.id}">Edit Ad</button>
+        </form>
         <a href="/ads">Back to Ads</a>
     </div>
 <%--</form>--%>
