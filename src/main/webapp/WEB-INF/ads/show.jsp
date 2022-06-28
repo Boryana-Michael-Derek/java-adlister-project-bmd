@@ -19,20 +19,26 @@
 <style>
     body {
         font-family: "Creepster", sans-serif;
+        font-size: medium;
     }
+
 </style>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
 <%--<form class="container bg-danger">--%>
-    <div class="col-md-12">
-        <h1>${ad.title}</h1>
-        <p>${ad.description}</p>
+   <div class="container d-flex h-100">
+       <div class="col-6 mx-auto">
+       <div class="jumbotron">
+        <h1 class="display-6 ">${ad.title}</h1>
+        <p class="lead">${ad.description}</p>
         <form action="/edit/${ad.id}" method="get">
-            <button type="submit" name="editAd" value="${ad.id}">Edit Ad</button>
+            <button type="submit" class="btn btn-dark btn-lg" name="editAd" value="${ad.id}">Edit Ad</button>
         </form>
         <a href="/ads">Back to Ads</a>
     </div>
+   </div>
+   </div>
 <%--</form>--%>
 
 
