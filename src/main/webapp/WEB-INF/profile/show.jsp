@@ -37,15 +37,18 @@
                 <h2>${ad.title}</h2>
                 <p>${ad.description}</p>
                 <form action="/ads" method="post">
-                    <button type="submit" class="btn btn-dark float-right" name="showad" value="${ad.id}">View
+                    <button type="submit" class="btn btn-dark form-control btn-block" name="showad"
+                            value="${ad.id}">View
                         Ad</button>
                 </form>
                 <form action="/edit/${ad.id}" method="get">
-                    <button type="submit" class="btn btn-dark float-right" name="editAd" value="${ad.id}">Edit
+                    <button type="submit" class="btn btn-dark form-control btn-block" name="editAd"
+                            value="${ad.id}">Edit
                         Ad</button>
                 </form>
                 <form action="/delete" method="post">
-                    <button type="submit" class="btn btn-dark float-left" name="deleteAd" value="${ad.id}">Delete
+                    <button type="submit" class="btn btn-dark form-control btn-block" name="deleteAd"
+                            value="${ad.id}">Delete
                         Ad</button>
                 </form>
             </div>
