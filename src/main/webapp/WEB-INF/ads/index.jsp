@@ -14,6 +14,9 @@
 <style>
     body {
         font-family: "Creepster", sans-serif;
+        background-image: 100%;
+        background-image: url("https://images.pexels.com/photos/3454270/pexels-photo-3454270.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+
     }
 
     .buttons {
@@ -33,11 +36,12 @@
     /*.card {*/
     /*    min-width: 100px;*/
     /*}*/
-    @media (min-width: 768px){
+    @media (min-width: 768px) {
         .card {
-            /*column-count: 3;*/
-            min-width: 100%;
-            padding: 10px;
+            /*!*column-count: 3;*!*/
+            /*min-width: 100%;*/
+            /*max-width: 100%;*/
+            /*padding: 10px;*/
         }
     }
 </style>
@@ -48,44 +52,45 @@
     <input class="form-control" name="search" type="search" placeholder="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
 </form>
-<div class="container">
+<div class="container" style=" margin: auto">
     <h1>Browse our creepy stuff</h1>
-    <div class="card-deck">
-        <%--            <div class="card-deck">--%>
-        <c:forEach var="ad" items="${ads}">
-            <div class="row">
-            <div class="card col-md-4">
-                <div class="card-body text-center">
-<%--                    <div class="flex-column">--%>
-                        <h2><a href="/ads/show.jsp">${ad.title}</a></h2>
-                        <h2>${ad.title}</h2>
-                        <p>${ad.description}</p>
-                        <div class=" buttons">
-                            <form style="padding: 5px" action="/ads" method="post">
-                                <button class="inline" id="view-ad" type="submit" name="showad"
-                                        value="${ad.id}">
-                                    View Ad
-                                </button>
-                            </form>
-                            <form style="padding: 5px" action="/edit/${ad.id}" method="get">
-                                <button class="inline" id="edit-ad" type="submit" name="editAd"
-                                        value="${ad.id}">
-                                    Edit Ad
-                                </button>
-                            </form>
-                            <form style="padding: 5px" action="/delete" method="post">
-                                <button class="inline" id="delete-ad" type="submit" name="deleteAd"
-                                        value="${ad.id}">
-                                    Delete Ad
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+    <%--    <div class="card-deck">--%>
+    <%--            <div class="card-deck">--%>
+    <c:forEach var="ad" items="${ads}">
+        <%--            <div class="row">--%>
+<%--        <div class="card">--%>
+        <div class="col-sm-12 col-md-6 col-xl-4" style="text-align: center; background-image: linear-gradient(45deg, black, darkgray)">
+                <%--                <div class="card-body text-center">--%>
+                <%--                    <div class="flex-column">--%>
+<%--            <h2><a href="/ads/show.jsp">${ad.title}</a></h2>--%>
+            <h2 style="color:red;font-size:2em">${ad.title}</h2>
+            <p style="color:red">${ad.description}</p>
+            <div class=" buttons">
+                <form style="padding: 5px" action="/ads" method="post">
+                    <button class="inline" id="view-ad" type="submit" name="showad"
+                            value="${ad.id}">
+                        View Ad
+                    </button>
+                </form>
+                <form style="padding: 5px" action="/edit/${ad.id}" method="get">
+                    <button class="inline" id="edit-ad" type="submit" name="editAd"
+                            value="${ad.id}">
+                        Edit Ad
+                    </button>
+                </form>
+                <form style="padding: 5px" action="/delete" method="post">
+                    <button class="inline" id="delete-ad" type="submit" name="deleteAd"
+                            value="${ad.id}">
+                        Delete Ad
+                    </button>
+                </form>
             </div>
-        </c:forEach>
-        <%--            </div>--%>
-    </div>
+        </div>
+<%--        </div>--%>
+        <%--</div>--%>
+    </c:forEach>
+    <%--            </div>--%>
+</div>
 
 <%--</div>--%>
 
