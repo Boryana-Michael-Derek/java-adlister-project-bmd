@@ -37,9 +37,9 @@ public class EditServlet extends HttpServlet {
             request.setAttribute("description", ad.getDescription());
         } catch (SQLException e) {
             System.out.println(e);
-//            throw new RuntimeException("Edit Servlet doGet", e);
         }
         request.getRequestDispatcher("/WEB-INF/ads/editAd.jsp").forward(request, response);
+
     }
 
         protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

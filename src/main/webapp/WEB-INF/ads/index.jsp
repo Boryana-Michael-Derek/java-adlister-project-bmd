@@ -62,7 +62,7 @@
                         <p>${ad.description}</p>
                         <div class=" buttons">
                             <form style="padding: 5px" action="/ads" method="post">
-                                <button class="inline" id="view-ad" type="submit" name="showad"
+                                <button class="inline" id="view-ad" type="submit" name="showAd"
                                         value="${ad.id}">
                                     View Ad
                                 </button>
