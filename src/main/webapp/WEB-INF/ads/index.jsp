@@ -14,9 +14,10 @@
 <style>
     body {
         font-family: "Creepster", sans-serif;
-        background-image: 100%;
-        background-image: url("https://images.pexels.com/photos/3454270/pexels-photo-3454270.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
-
+        /*background-image: url("https://images.pexels.com/photos/3454270/pexels-photo-3454270.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");*/
+        /*object-fit: cover;*/
+        background-size: cover;
+        background: url("https://images.pexels.com/photos/3454270/pexels-photo-3454270.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2") no-repeat scroll center;
     }
 
     .buttons {
@@ -46,7 +47,8 @@
     }
 </style>
 <body>
-<jsp:include page="/WEB-INF/partials/navbar.jsp"/>
+<div id="background-image"></div>
+    <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
 <form action="/ads" method="POST" class="">
     <input class="form-control" name="search" type="search" placeholder="Search">
