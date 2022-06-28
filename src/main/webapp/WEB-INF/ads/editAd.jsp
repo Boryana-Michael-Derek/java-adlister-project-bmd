@@ -28,7 +28,7 @@
             <label for="description">Description</label>
             <textarea id="description" name="description" class="form-control" type="text" placeholder="${ad.description}"></textarea>
         </div>
-        <input type="submit" class="btn btn-block btn-primary">
+        <input type="submit" class="btn btn-block btn-dark">
     </form>
 </div>
 

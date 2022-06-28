@@ -42,7 +42,11 @@
 <c:if test="${passwordError != null}" >
 <c:out value="${passwordError}"/>
 </c:if>
-            <input type="submit" class="btn btn-danger btn-block">
+
+            <input type="submit" class="btn btn-dark btn-block">
+
+            
+
         </form>
     </div>
 
