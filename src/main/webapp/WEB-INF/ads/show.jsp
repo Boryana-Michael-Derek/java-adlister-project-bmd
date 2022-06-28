@@ -20,6 +20,7 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
 <%--<form class="container bg-danger">--%>
+
    <div class="container-fluid">
        <div class="col-6 mx-auto">
        <div class="jumbotron">
