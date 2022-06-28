@@ -12,10 +12,22 @@
 <style>
     body {
         font-family: "Creepster", sans-serif;
+        background-color: lightgrey;
     }
-    h1, h2, p {
+    h1, h2 {
+        text-align: center;
+        color: red;
+    }
+
+    p{
         text-align: center;
     }
+
+    .btn{
+        color: red;
+    }
+
+
 
 
 </style>
