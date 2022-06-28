@@ -27,7 +27,7 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
 <%--<form class="container bg-danger">--%>
-   <div class="container d-flex h-100">
+   <div class="container-fluid">
        <div class="col-6 mx-auto">
        <div class="jumbotron">
         <h1 class="display-6 ">${ad.title}</h1>
