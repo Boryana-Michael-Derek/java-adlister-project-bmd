@@ -18,17 +18,22 @@
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
+<form action="/ads" method="POST" class="">
+    <input class="form-control" name="search" type="search" placeholder="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+
 <div class="container">
     <h1>Browse our creepy stuff</h1>
 
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-12">
-            <h2><a href="ads?showad=${ad.id}">${ad.title}</a></h2>
+<%--            <h2><a href="/ads/show.jsp">${ad.title}</a></h2>--%>
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
         </div>
         <form action="/ads" method="post">
-            <button type="submit" name="showad" value="${ad.id}">Show Ad</button>
+            <button type="submit" name="showAd" value="${ad.id}">View Ad</button>
         </form>
         <form action="/edit/${ad.id}" method="get">
             <button type="submit" name="editAd" value="${ad.id}">Edit Ad</button>

@@ -11,11 +11,9 @@ public interface Ads {
     // insert a new ad and return the new ad's id
     Long insert(Ad ad);
 
-    List<Ad> adsByUserId(Long id) throws SQLException;
+    List<Ad> adsById(Long id) throws SQLException;
 
-//    Ad showOneAd(long id);
-
-
+    //    Ad showOneAd(long id);
 
     Ad adsByAdId(Long id) throws SQLException;
 
@@ -27,5 +25,4 @@ public interface Ads {
 
 
     void editAd(Ad ad);
-
 }
