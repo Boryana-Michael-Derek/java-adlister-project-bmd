@@ -23,13 +23,9 @@ public interface Ads {
 
     List<Ad> adsByUserId(Long id) throws SQLException;
 
-
     List<Ad> searchAds(String search) throws SQLException;
-
 
     void editAd(Ad ad);
 
     void delete(Long id);
-
-    Object adsByUserId(long id);
 }
