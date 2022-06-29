@@ -48,7 +48,7 @@
 </style>
 <body>
 <div id="background-image"></div>
-    <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
+<jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
 <form action="/ads" method="POST" class="">
     <input class="form-control" name="search" type="search" placeholder="Search">
