@@ -220,10 +220,14 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public List<Ad> searchAds(String search) throws SQLException {
-        String searchQuery = "SELECT * FROM ads AS a JOIN ads_categories AS ac ON a.id = ac.ads_id JOIN categories AS c ON ac.categories_id = c.id WHERE c.category LIKE ? OR a.title LIKE ? OR a.description LIKE ?";
+        String searchQuery = "SELECT * FROM ads AS a LEFT JOIN ads_categories AS ac ON a.id = ac.ads_id JOIN categories AS c ON ac.categories_id = c.id WHERE c.category LIKE ? OR a.title LIKE ? OR a.description LIKE ?";
         String searchTerm = "%" + search + "%";
-        PreparedStatement statement = connection.prepareStatement(searchQuery, Statement.RETURN_GENERATED_KEYS); //
-//        PreparedStatement statement = connection.prepareStatement(searchQuery);
+
+        //PreparedStatement statement = connection.prepareStatement(searchQuery, Statement.RETURN_GENERATED_KEYS); //
+
+        PreparedStatement statement = connection.prepareStatement(searchQuery);
+
+
         statement.setString(1, searchTerm);
         statement.setString(2, searchTerm);
         statement.setString(3, searchTerm);
@@ -324,6 +328,11 @@ public class MySQLAdsDao implements Ads {
         } catch (SQLException e) {
             throw new RuntimeException("Error deleting ad.", e);
         }
+    }
+
+    @Override
+    public Object adsByUserId(long id) {
+        return null;
     }
 
     public static void main(String[] args) throws SQLException {

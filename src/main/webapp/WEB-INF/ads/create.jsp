@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
@@ -11,6 +12,8 @@
 <style>
     body {
         font-family: "Creepster", sans-serif;
+        background-size: cover;
+        background: url("https://images.pexels.com/photos/3454270/pexels-photo-3454270.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2") no-repeat scroll center;
     }
 </style>
 <body>
@@ -22,10 +25,12 @@
             <div class="form-group">
                 <label for="title">Title</label>
                 <input id="title" name="title" class="form-control" type="text">
+                <c:out value="${titleError}"></c:out>
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
                 <textarea id="description" name="description" class="form-control" type="text"></textarea>
+                <c:out value="${descriptionError}"></c:out>
             </div>
             <input type="submit" class="btn btn-block btn-dark">
         </form>

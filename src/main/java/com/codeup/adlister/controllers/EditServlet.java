@@ -25,8 +25,8 @@ public class EditServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-            long id = Long.parseLong(request.getPathInfo().substring(1));
-            request.setAttribute("id", id);
+        long id = Long.parseLong(request.getPathInfo().substring(1));
+        request.setAttribute("id", id);
         System.out.println("id is " + id);
 
         try {
@@ -42,19 +42,30 @@ public class EditServlet extends HttpServlet {
 
     }
 
-        protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            User user = (User) request.getSession().getAttribute("user");
-            if (user == null) {
-                response.sendRedirect("/login");
-                return;
-            }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user == null) {
+            response.sendRedirect("/login");
+            return;
+        }
 
-            long editAdId = Long.parseLong(request.getPathInfo().substring(1));
+        long editAdId = Long.parseLong(request.getPathInfo().substring(1));
 //            long editAdId = Long.parseLong(request.getParameter("editAd"));
-            long editUserId = user.getId();
-            String editTitle = request.getParameter("title");
-            String editDescription = request.getParameter("description");
+        long editUserId = user.getId();
+        String editTitle = request.getParameter("title");
+        String editDescription = request.getParameter("description");
 
+        boolean correctAdInfo = false;
+        if (editTitle.isEmpty()) {
+            request.setAttribute("titleError", "You need to enter a title!");
+            request.getRequestDispatcher("/WEB-INF/ads/editAd.jsp").forward(request, response);
+        } else if(editDescription.isEmpty()){
+            request.setAttribute("descriptionError", "You need to describe your add.");
+            request.getRequestDispatcher("/WEB-INF/ads/editAd.jsp").forward(request, response);
+        } else {
+            correctAdInfo = true;
+        }
+        if (correctAdInfo) {
             Ad ad = DaoFactory.getAdsDao().findAdByAdId(editAdId);
             ad.setTitle(editTitle);
             ad.setDescription(editDescription);
@@ -63,5 +74,6 @@ public class EditServlet extends HttpServlet {
             request.setAttribute("ad", DaoFactory.getAdsDao().findAdByAdId(ad.getId()));
             request.getRequestDispatcher("/WEB-INF/ads/show.jsp").forward(request, response);
             response.sendRedirect("/ads");
+        }
     }
 }
