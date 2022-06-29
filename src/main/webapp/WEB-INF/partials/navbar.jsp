@@ -40,9 +40,13 @@
                 </div>
             </li>
         </ul>
-        <form action="/ads/search" method="GET" class="form-inline ml-1 my-2 my-sm-0">
-            <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search">
-            <button class="btn btn-outline-danger" type="submit">Search</button>
+<%--        <form action="/ads/search" method="GET" class="form-inline ml-1 my-2 my-sm-0">--%>
+<%--            <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search">--%>
+<%--            <button class="btn btn-outline-danger" type="submit">Search</button>--%>
+<%--        </form>--%>
+        <form action="/ads" method="POST" class="">
+            <input class="form-control" name="search" type="search" placeholder="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
 
     </div>
