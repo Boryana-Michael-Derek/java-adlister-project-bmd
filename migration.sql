@@ -44,4 +44,4 @@ INSERT INTO categories(category) VALUES
     ('old');
 
 INSERT INTO ads_categories (ads_id, categories_id)
-    VALUES (1, 3), (1,4), (1,6), (2, 3), (2, 6);
+    VALUES (3, 1), (3,4), (3,6), (4, 5), (4, 2);
