@@ -59,12 +59,6 @@ public class EditServlet extends HttpServlet {
             ad.setTitle(editTitle);
             ad.setDescription(editDescription);
 
-//            Ad ad = new Ad(editAdId,
-//                    user.getId(),
-//                    request.getParameter("title"),
-//                    request.getParameter("description")
-//            );
-
             DaoFactory.getAdsDao().updateAd(ad);
             request.setAttribute("ad", DaoFactory.getAdsDao().findAdByAdId(ad.getId()));
             request.getRequestDispatcher("/WEB-INF/ads/show.jsp").forward(request, response);

@@ -32,7 +32,7 @@ public class SearchAdsServlet extends HttpServlet {
             request.getSession().setAttribute("search", adList);
         }
 
-        request.setAttribute("adList", request.getSession().getAttribute("search"));
+        request.setAttribute("adList", request.getSession().getAttribute("indexSearch"));
         request.getRequestDispatcher("/WEB-INF/ads/searchResults.jsp").forward(request, result);
     }
 

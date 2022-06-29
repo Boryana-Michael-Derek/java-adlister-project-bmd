@@ -29,17 +29,18 @@ public class AdsIndexServlet extends HttpServlet {
         if (middle != null) {
             id = Long.parseLong(middle);
         }
-//        long editId = Long.parseLong(request.getParameter("editAd"));
+
         List<Ad> adList = null;
 
         try {
             adList = DaoFactory.getAdsDao().searchAds(search);
+
         } catch (SQLException e) {
             System.out.println("did not get adList from search input");
             e.printStackTrace();
         }
 
-        request.getSession().setAttribute("search", adList);
+        request.getSession().setAttribute("indexSearch", adList);
 
         if (middle != null) {
             try {
@@ -49,9 +50,6 @@ public class AdsIndexServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
-
-//        request.setAttribute("editAd", DaoFactory.getAdsDao().findAdByAdId(editId));
-//        request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);
 
         response.sendRedirect("/ads/search"); //this line must be below line above it or else 500 error!
     }

@@ -222,7 +222,7 @@ public class MySQLAdsDao implements Ads {
     public List<Ad> searchAds(String search) throws SQLException {
         String searchQuery = "SELECT * FROM ads AS a JOIN ads_categories AS ac ON a.id = ac.ads_id JOIN categories AS c ON ac.categories_id = c.id WHERE c.category LIKE ? OR a.title LIKE ? OR a.description LIKE ?";
         String searchTerm = "%" + search + "%";
-        PreparedStatement statement = connection.prepareStatement(searchQuery, Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement statement = connection.prepareStatement(searchQuery, Statement.RETURN_GENERATED_KEYS); //
 //        PreparedStatement statement = connection.prepareStatement(searchQuery);
         statement.setString(1, searchTerm);
         statement.setString(2, searchTerm);
@@ -299,6 +299,7 @@ public class MySQLAdsDao implements Ads {
     public void updateAd(Ad ad) {
         try {
             String query = "UPDATE ads SET title = ?, description = ? WHERE id = ?;";
+//            update ads_categories set ad_id and categories_ic where =.....
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, ad.getTitle());
             statement.setString(2, ad.getDescription());
