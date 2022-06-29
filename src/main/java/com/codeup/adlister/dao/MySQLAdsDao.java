@@ -325,6 +325,11 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    @Override
+    public Object adsByUserId(long id) {
+        return null;
+    }
+
     public static void main(String[] args) throws SQLException {
         Ad ad = DaoFactory.getAdsDao().adsByAdId(1L);
         System.out.println(ad);
