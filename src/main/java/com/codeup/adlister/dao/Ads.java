@@ -13,8 +13,6 @@ public interface Ads {
 
     List<Ad> adsById(Long id) throws SQLException;
 
-    List<Ad> adsByUserId(Long id) throws SQLException;
-
     //    Ad showOneAd(long id);
 
     Ad adsByAdId(Long id) throws SQLException;
@@ -24,10 +22,14 @@ public interface Ads {
     void updateAd(Ad ad);
 
 
+    List<Ad> adsByUserId(Long id) throws SQLException;
+
     List<Ad> searchAds(String search) throws SQLException;
 
 
     void editAd(Ad ad);
 
     void delete(Long id);
+
+    Object adsByUserId(long id);
 }
