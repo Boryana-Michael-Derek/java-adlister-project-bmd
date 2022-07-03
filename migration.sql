@@ -21,12 +21,13 @@ CREATE TABLE ads (
     FOREIGN KEY (user_id) REFERENCES users(id)
         ON DELETE CASCADE
 );
-
+USE adlister_db;
 CREATE TABLE categories (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     category VARCHAR(240) NOT NULL,
     PRIMARY KEY (id)
 );
+
 
 CREATE TABLE ads_categories (
     ads_id INTEGER UNSIGNED NOT NULL,

@@ -65,8 +65,8 @@
                 <%--                <div class="card-body text-center">--%>
                 <%--                    <div class="flex-column">--%>
 <%--            <h2><a href="/ads/show.jsp">${ad.title}</a></h2>--%>
-            <h2 style="color:red;font-size:2em">${ad.title}</h2>
-            <p style="color:red">${ad.description}</p>
+            <h2 style="color:red;font-size:2em"><c:out value="${ad.title}" /></h2>
+            <p style="color:red"><c:out value = "${ad.description}" /></p>
             <div class=" buttons">
                 <form style="padding: 5px" action="/ads" method="post">
                     <button class="inline" id="view-ad" type="submit" name="showAd"
